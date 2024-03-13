@@ -138,6 +138,9 @@ vim.opt.splitbelow = true
 --  and :help 'listchars'
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.tabstop = 8
+vim.opt.shiftwidth = 8
+vim.bo.softtabstop = 4
 vim.opt.expandtab = true
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -620,6 +623,7 @@ require('lazy').setup {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+        c = { 'clang_format' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

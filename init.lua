@@ -1,5 +1,6 @@
 --[[
-
+-- supposedly need following line for ocaml
+-- set rtp^="/home/nevin/.opam/default/share/ocp-indent/vim"
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -138,7 +139,13 @@ vim.opt.splitbelow = true
 --  and :help 'listchars'
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
@@ -154,7 +161,8 @@ vim.opt.scrolloff = 10
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('n', 'jk', '<Esc>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -537,7 +545,7 @@ require('lazy').setup {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -813,7 +821,6 @@ require('lazy').setup {
   --
   require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
